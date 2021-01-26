@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pionner Bank Bangladash Limited</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="indext.css">
+</head>
+<body>
+    <main>
+        <div class="first-part" id="login-area">
+            <h1 class="text-center">Pionner Bank Bangladash Limited</h1>
+            <div class="from-info">
+                <h4>Login</h4>
+                <input type="text" class="form-control" placeholder="enter your emaill">
+                <br>
+                <input type="password" class="form-control" placeholder="enter your password">
+                <br>
+               <button class="btn  btn-success" id="login">enter</button>
+            </div>
+         </div>
+
+
+<!-------------------------------------------second part-------->
+
+
+         <div class="second-part ">
+           <div class="transtitionId" id="trans">
+            <h1 class="text-center">Pionner Bank Bangladash Limited </h1>
+            <div class="section">
+                <div class="row">
+
+                    <div class="col-md-4">
+                        <div class="diposit spit ">
+                            <h2>Diposit</h2>
+                            <h3>$ <span id="cDiposite">00</span></h3>
+                        </div>
+                       </div>
+                       <div class="col-md-4">
+                        <div class="withdrow spit ">
+                            <h2>withdrow</h2>
+                            <h3>$ <span id="withDrowValue">00</span></h3>
+                        </div>
+                       </div>
+                       <div class="col-md-4">
+                        <div class="total spit ">
+                            <h2>Total</h2>
+                            <h3>$ <span id="currentBlance">1200</span></h3>
+                        </div>
+                      
+                    </div>
+                </div>
+            </div>
+
+               <!----------------------------------------third part--------->
+         
+                
+            <div class="third-part">
+                <div class="row">
+                    <div class="col-md-6">
+                    <div class="from-info">
+                        <h3>Diposit</h3>
+                        <input type="number" id="cashDiposit" class="form-control">
+                        <br>
+                        <br>
+                        <button class="btn btn-success" id="addDeposit">Ok</button>
+                    </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="from-info">
+                            <h3>Withdrow</h3>
+                        <input type="number"  class="form-control" id="WithDrowAmount">
+                        <br>
+                        <br>
+                        <button class="btn btn-success" id="withDrow">Ok</button>
+                        </div>
+                    </div>          
+            </div>
+            </div>
+          </div>     
+    </main>
+    <script>
+
+ const  login = document.getElementById('login');
+ login.addEventListener('click', function(){
+     const log = document.getElementById('login-area');
+     log.style.display = 'none';
+
+const login = document.getElementById('trans');
+    login.style.display = 'block';
+ })
+
+
+ // button hendler 
+
+const add = document.getElementById('addDeposit');
+add.addEventListener('click', function(){
+
+  const cashAmount = document.getElementById('cashDiposit').value;
+  
+  const cashNumber = parseFloat(cashAmount);
+
+//  go to amount diposit'''
+
+//  const curentDipost = document.getElementById('cDiposite').innerText;
+
+//  const currenDipostNumber = parseFloat(curentDipost);
+
+//  const totalDipositNumber = cashNumber +  currenDipostNumber ;
+
+//   document.getElementById('cDiposite').innerText = totalDipositNumber;
+
+  updateSpentText('cDiposite', cashNumber );
+  updateSpentText('currentBlance',cashNumber );
+
+  document.getElementById('cashDiposit').value="";
+})
+
+
+// withdroww......
+
+const withDrow = document.getElementById('withDrow');
+withDrow.addEventListener('click', function(){
+    const WithDrowAmount = document.getElementById('WithDrowAmount').value;
+    const WithDrAm = parseFloat(WithDrowAmount);
+
+
+   const withDrowValue = document.getElementById('withDrowValue').innerText;
+   const withDroValo = parseFloat(withDrowValue);
+   const totalValu = WithDrAm + withDroValo;
+   document.getElementById('withDrowValue').innerText = totalValu;
+   document.getElementById('WithDrowAmount').value = '';
+
+   const curentBal = document.getElementById('currentBlance').innerText;
+   const curentBa = parseFloat(curentBal);
+   const curensTotal = curentBa - WithDrAm;
+   document.getElementById('currentBlance').innerText = curensTotal; 
+})
+
+function updateSpentText(id, cashNumber){
+
+            const currentBlance = document.getElementById(id).innerText;
+
+            const currentBlanceNumber = parseFloat(currentBlance);
+
+            const totalCurentBlance = cashNumber + currentBlanceNumber;
+
+            document.getElementById(id).innerText = totalCurentBlance;
+}
+
+
+
+
+
+    </script>
+    
+
+</body>
+</html>
